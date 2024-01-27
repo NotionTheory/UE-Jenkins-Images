@@ -11,6 +11,7 @@ jobs:
   build-linux:
     name: Linux - docker-buildtools
     runs-on: ubuntu-latest
+    environment: 1.X
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -61,6 +62,7 @@ jobs:
   build-windows:
     name: Windows - docker-buildtools
     runs-on: ubuntu-latest
+    environment: 1.X
     steps:
       - name: Checkout
         uses: actions/checkout@v2
