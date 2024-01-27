@@ -11,6 +11,7 @@ jobs:
   build:
     name: docker-controller
     runs-on: ubuntu-latest
+    environment: 1.X
     steps:
       - name: Checkout
         uses: actions/checkout@v2
