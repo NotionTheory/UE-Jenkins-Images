@@ -83,11 +83,17 @@ jobs:
           echo "::set-output name=image_tag::${IMAGE_TAG}"
           echo "::set-output name=image_url::${IMAGE_URL}"
 
-      - name: Setup gcloud CLI
-        uses: google-github-actions/setup-gcloud@main
+      #- name: Setup gcloud CLI
+      #  uses: google-github-actions/setup-gcloud@main
+      #  with:
+      #    project_id: ${{ secrets.GOOGLE_CLOUD_PROJECT_ID }}
+      #    service_account_key: ${{ secrets.GOOGLE_CLOUD_IMAGE_BUILDER_INSTANCE_CONTROLLER_SERVICE_ACCOUNT_KEY }}
+      #    export_default_credentials: true
+      
+      - name: Setup gcloud CLI V2
+        uses: 'google-github-actions/auth@v2'
         with:
-          project_id: ${{ secrets.GOOGLE_CLOUD_PROJECT_ID }}
-          service_account_key: ${{ secrets.GOOGLE_CLOUD_IMAGE_BUILDER_INSTANCE_CONTROLLER_SERVICE_ACCOUNT_KEY }}
+          credentials_json: ${{ secrets.GOOGLE_CLOUD_BUILD_ARTIFACT_UPLOADER_SERVICE_ACCOUNT_KEY }}
           export_default_credentials: true
 
       - name: Test if image already exists
